@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Health AI Bot - Ultimate Pitch</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #111;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-green: #25D366;
+            --accent-blue: #3B82F6;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-glass: rgba(255, 255, 255, 0.05);
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-stack);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Slide Container */
+        .slides-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: translateY(30px) scale(0.97);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            padding: 4rem;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+            z-index: 10;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 4.5rem;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 30%, #666 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 950px;
+            text-align: center;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--accent-green);
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+        }
+
+        /* Background Effects */
+        .glow {
+            position: absolute;
+            width: 900px;
+            height: 900px;
+            background: var(--accent-green);
+            filter: blur(300px);
+            opacity: 0.08;
+            border-radius: 50%;
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            width: 100%;
+            max-width: 1250px;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            width: 100%;
+            max-width: 1250px;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1150px;
+        }
+
+        .bento-item {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 24px;
+            padding: 2.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .bento-item:hover {
+            border-color: #444;
+            background: #181818;
+        }
+
+        .bento-item.large {
+            grid-column: span 2;
+        }
+
+        .bento-item.tall {
+            grid-row: span 2;
+        }
+
+        /* Components */
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 2.5rem;
+            border-radius: 28px;
+            text-align: center;
+            height: 100%;
+        }
+
+        .stat-number {
+            font-size: 5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.2rem;
+            font-weight: bold;
+        }
+
+        .code-block {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            background: #000;
+            padding: 1.4rem;
+            border-radius: 12px;
+            color: #25D366;
+            font-size: 0.8rem;
+            margin-top: 1.2rem;
+            border: 1px solid #333;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        .persona-card {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 28px;
+            padding: 3rem;
+            max-width: 500px;
+            text-align: left;
+            position: relative;
+        }
+
+        .persona-header {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .persona-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #444, #111);
+            border-radius: 50%;
+            border: 2px solid #555;
+        }
+
+        /* Architecture Diagram SVG Container */
+        .arch-container {
+            width: 100%;
+            max-width: 1100px;
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 24px;
+            padding: 3rem;
+            margin-top: 2rem;
+        }
+
+        /* Dashboard Mockup */
+        .dash-mockup {
+            width: 100%;
+            max-width: 1100px;
+            height: 550px;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .dash-sidebar {
+            background: #111;
+            border-right: 1px solid #333;
+            padding: 2rem;
+        }
+
+        .dash-content {
+            padding: 2rem;
+            background: #050505;
+        }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .dash-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .dash-widget {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        /* Phone UI */
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            background: #000;
+            border: 10px solid #333;
+            border-radius: 45px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(37, 211, 102, 0.15), 0 30px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .phone-header {
+            background: #075E54;
+            padding: 35px 15px 15px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .phone-body {
+            background: #fdfdfd;
+            height: 100%;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: inset 0 0 80px rgba(255, 255, 255, 0.8);
+        }
+
+        .msg {
+            font-size: 0.85rem;
+            padding: 12px 14px;
+            border-radius: 14px;
+            max-width: 85%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            line-height: 1.4;
+        }
+
+        .msg.sent {
+            align-self: flex-end;
+            background: #e1ffc7;
+            border-top-right-radius: 2px;
+            border: 1px solid #d4f0b0;
+            color: #000;
+        }
+
+        .msg.received {
+            align-self: flex-start;
+            background: #fff;
+            border-top-left-radius: 2px;
+            border: 1px solid #eee;
+            color: #000;
+        }
+
+        /* Navigation Controls */
+        .controls {
+            position: fixed;
+            bottom: 2.5rem;
+            right: 2.5rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: var(--accent-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff;
+        }
+
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-blue), var(--accent-purple));
+            width: 0%;
+            transition: width 0.4s;
+        }
+
+        .slide-number {
+            position: fixed;
+            bottom: 2.5rem;
+            left: 2.5rem;
+            color: #444;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1100px;
+            margin-top: 3rem;
+        }
+
+        .timeline-item {
+            text-align: left;
+            padding: 1.5rem;
+            border-left: 2px solid #333;
+        }
+
+        .timeline-item.active {
+            border-color: var(--accent-green);
+        }
+
+        .timeline-label {
+            color: var(--accent-green);
+            font-weight: 800;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Utilities */
+        .text-left {
+            text-align: left;
+        }
+
+        .text-accent {
+            color: var(--accent-green);
+        }
+
+        .mt-2 {
+            margin-top: 1rem;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto;
+                height: auto;
+            }
+
+            .slides-container {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .slide {
+                padding: 2.5rem 1.5rem;
+                height: auto;
+                min-height: 100vh;
+                position: relative;
+                opacity: 1;
+                transform: none;
+                display: none;
+                overflow-y: visible;
+            }
+
+            .slide.active {
+                display: flex;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+                margin-bottom: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .grid-2,
+            .grid-3,
+            .bento-grid,
+            .dash-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .bento-item.large {
+                grid-column: span 1;
+            }
+
+            .stat-number {
+                font-size: 3.5rem;
+            }
+
+            .phone-mockup {
+                width: 250px;
+                height: 500px;
+                margin: 0 auto;
+            }
+
+            .dash-mockup {
+                grid-template-columns: 1fr;
+                height: auto;
+                min-height: 400px;
+            }
+
+            .dash-sidebar {
+                display: none;
+            }
+
+            .arch-container {
+                padding: 1rem;
+                overflow-x: auto;
+            }
+
+            .timeline {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline-item {
+                padding: 1rem;
+            }
+
+            .controls {
+                bottom: 1rem;
+                right: 1rem;
+                gap: 0.5rem;
+            }
+
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .slide-number {
+                bottom: 1.2rem;
+                left: 1.2rem;
+            }
+
+            .persona-card {
+                padding: 1.5rem;
+                max-width: 100%;
+            }
+
+            .code-block {
+                font-size: 0.7rem;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slides-container">
+
+        <!-- Slide 1: Hero -->
+        <div class="slide active" id="slide-1">
+            <div class="glow"></div>
+            <div class="tagline">Tech-Forward Healthcare • PTech</div>
+            <h1>Healthcare for All.<br>One Message at a Time.</h1>
+            <p>Deploying conversational intelligence to bridge the gap between 8 million citizens and life-saving
+                medical guidance using the power of Agentic AI.</p>
+            <div style="margin-top: 3rem; font-size: 1.1rem; color: #fff;">
+                <span class="text-accent">Live Node:</span> +232 75 332939
+            </div>
+        </div>
+
+        <!-- Slide 2: The Critical Stat -->
+        <div class="slide" id="slide-2">
+            <div class="tagline">MARKET CONTEXT</div>
+            <h2>A Structural Collapse</h2>
+            <div class="grid-2">
+                <div class="stat-card">
+                    <div class="stat-number" style="color: var(--accent-red);">800+</div>
+                    <div class="stat-label">Total Licensed Doctors</div>
+                    <p style="font-size: 1rem;">For 8.4 million people. This isn't just a scarcity; it's a systemic
+                        impossibility for human-only care.</p>
+                </div>
+                <div style="text-align: left;">
+                    <h3>The Doctor-to-Citizen Gap</h3>
+                    <p class="text-left">In Sierra Leone, the ratio is approximately <strong>1.0 doctors per 10,000
+                            people</strong>.
+                        The global WHO standard requires at least <strong>10.0</strong> to provide basic universal
+                        health coverage.</p>
+                    <div class="mt-4"
+                        style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid var(--accent-red); padding: 1.5rem; border-radius: 8px;">
+                        <p class="text-left" style="font-size: 1.1rem; color: #fff;">Wait times exceed 6 hours. Travel
+                            costs exceed daily wages. Misinformation is the only free available health resource.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: The 4 Pillars of Failure -->
+        <div class="slide" id="slide-3">
+            <div class="tagline">SYSTEMIC INEQUITY</div>
+            <h2>Why Modern Medicine Fails the Rural Poor</h2>
+            <div class="bento-grid">
+                <div class="bento-item">
+                    <div class="bento-title">📍 Geographic Isolation</div>
+                    <div class="bento-desc">70% of the population lives in rural clusters. PHUs (Peripheral Health
+                        Units) are often empty, under-resourced, or unreachable due to monsoon-season road washouts.
+                    </div>
+                </div>
+                <div class="bento-item">
+                    <div class="bento-title">🗣️ Linguistic Exclusion</div>
+                    <div class="bento-desc">Traditional medical portals use English. Over 95% of the target population
+                        thinks, speaks, and dreams in Krio. English resources are effectively invisible.</div>
+                </div>
+                <div class="bento-item">
+                    <div class="bento-title">💰 Financial Catastrophe</div>
+                    <div class="bento-desc">One clinic visit can cost $10 in travel and fees—half a week's income. Most
+                        families wait until a condition is critical (and expensive) before seeking help.</div>
+                </div>
+                <div class="bento-item">
+                    <div class="bento-title">📊 Invisible Outbreaks</div>
+                    <div class="bento-desc">Maternal and child health issues (Pneumonia, Malaria) go unrecorded because
+                        patients die at home. The government lacks real-time signal on public health status.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: User Story (Sarah) -->
+        <div class="slide" id="slide-4">
+            <div class="grid-2">
+                <div style="text-align: left;">
+                    <div class="tagline">THE HUMAN ARCHITECTURE</div>
+                    <h2>The Midnight Choice</h2>
+                    <p class="text-left" style="color: #fff;">Sarah is 28, a mother of two in a small village near
+                        Makeni.</p>
+                    <p class="text-left mt-2">Her youngest child has a sudden high fever and chest retractions. It is
+                        raining. There is no car. There is no doctor.</p>
+                    <div class="mt-4"
+                        style="padding: 1rem; border-left: 3px solid var(--accent-purple); background: #111; border-radius: 8px;">
+                        <p class="text-left" style="font-size: 1.1rem;">"If I spend my money on a motorbike to the
+                            clinic and it's just a cold, we don't eat for three days. If I wait and it's Malaria, my son
+                            might not wake up."</p>
+                    </div>
+                    <p class="text-left mt-4" style="font-size: 1rem;">This is the <strong>Information Gap</strong> that
+                        costs lives. Sarah needs a reliable answer in seconds, not hours.</p>
+                </div>
+                <div class="persona-card">
+                    <div class="persona-header">
+                        <div class="persona-avatar"></div>
+                        <div>
+                            <div style="font-weight: bold; font-size: 1.5rem;">Sarah</div>
+                            <div style="color: var(--accent-green); font-size: 0.9rem; font-weight: 800;">Target User
+                                Profile</div>
+                        </div>
+                    </div>
+                    <div class="bento-desc" style="color: #fff; font-size: 1.1rem; line-height: 1.8;">
+                        • Literacy Level: Low (Audio Preferred)<br>
+                        • Primary Communication: WhatsApp Voice<br>
+                        • Tech Hardware: $40 Android Smartphone<br>
+                        • Data Plan: Limited/Expensive
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: The Infrastructure: AI Bridge -->
+        <div class="slide" id="slide-5">
+            <div class="glow" style="background: var(--accent-blue);"></div>
+            <div class="tagline">THE PATCH</div>
+            <h1>The AI-Health Bridge</h1>
+            <p>We are the first platform to link Enterprise-Grade AI with the WhatsApp ecosystem to provide
+                **Zero-Friction Medical Triage**.</p>
+            <div class="grid-3 mt-4">
+                <div class="stat-card">
+                    <div style="font-size: 3rem;">📱</div>
+                    <h3>Native Entry</h3>
+                    <p style="font-size: 1rem;">No app download. No account creation. If they have WhatsApp, they have a
+                        doctor.</p>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size: 3rem;">🏥</div>
+                    <h3>Clinical RAG</h3>
+                    <p style="font-size: 1rem;">Grounded in the <i>Sierra Leone Standard Treatment Guidelines
+                            (2021)</i>. Real medical authority.</p>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size: 3rem;">🎙️</div>
+                    <h3>Fuzzy NLP</h3>
+                    <p style="font-size: 1rem;">Understands phonetic Krio voice notes and text, handling dialect
+                        variations with high accuracy.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: The Infrastructure Overview -->
+        <div class="slide" id="slide-6">
+            <div class="tagline">TECHNICAL ARCHITECTURE</div>
+            <h2>Built for the Last Mile</h2>
+            <div class="arch-container">
+                <svg width="1000" height="300" viewBox="0 0 1000 300">
+                    <defs>
+                        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orientation="auto"
+                            markerUnits="strokeWidth">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+                        </marker>
+                    </defs>
+                    <!-- Nodes -->
+                    <rect x="50" y="100" width="150" height="100" rx="15" fill="#111" stroke="#25D366"
+                        stroke-width="2" />
+                    <text x="125" y="155" fill="#fff" font-size="20" text-anchor="middle"
+                        font-weight="bold">WhatsApp</text>
+
+                    <rect x="280" y="100" width="150" height="100" rx="15" fill="#111" stroke="#333" stroke-width="2" />
+                    <text x="355" y="155" fill="#fff" font-size="20" text-anchor="middle" font-weight="bold">Node.js
+                        Bridge</text>
+
+                    <rect x="510" y="100" width="150" height="100" rx="15" fill="#111" stroke="#3B82F6"
+                        stroke-width="2" />
+                    <text x="585" y="155" fill="#fff" font-size="20" text-anchor="middle" font-weight="bold">Kai
+                        AI</text>
+
+                    <rect x="740" y="50" width="150" height="80" rx="10" fill="#111" stroke="#8b5cf6"
+                        stroke-width="2" />
+                    <text x="815" y="95" fill="#fff" font-size="16" text-anchor="middle">Supabase DB</text>
+
+                    <rect x="740" y="170" width="150" height="80" rx="10" fill="#111" stroke="#fff" stroke-width="2" />
+                    <text x="815" y="215" fill="#fff" font-size="16" text-anchor="middle">Admin Dash</text>
+
+                    <!-- Connections -->
+                    <line x1="200" y1="150" x2="280" y2="150" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                    <line x1="430" y1="150" x2="510" y2="150" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                    <line x1="660" y1="130" x2="740" y2="90" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                    <line x1="660" y1="170" x2="740" y2="210" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                </svg>
+                <div
+                    style="display: flex; justify-content: space-between; margin-top: 1.5rem; color: #888; font-size: 0.9rem;">
+                    <span>Voice/Text Input</span>
+                    <span>Relay & Pre-processing</span>
+                    <span>Agentic Reasoning (RAG)</span>
+                    <span>Audit & Human-in-the-Loop</span>
+                </div>
+            </div>
+            <p class="mt-4" style="font-size: 1rem;">Our architecture ensures that no message is lost. Every clinical
+                intent is categorized, logged, and audited for safety.</p>
+        </div>
+
+        <!-- Slide 7: User Flow: Input & Transformation -->
+        <div class="slide" id="slide-7">
+            <div class="tagline">PHASE 1: THE INPUT PIPELINE</div>
+            <h2>Linguistic De-coding</h2>
+            <div class="grid-2">
+                <div style="text-align: left;">
+                    <h3>Audio-to-Intent</h3>
+                    <p class="text-left">Users do not type—they talk. We handle the heavy lifting of unstructured
+                        dialectical audio data.</p>
+                    <ul style="list-style: none; margin-top: 1.5rem;">
+                        <li
+                            style="margin-bottom: 1rem; border-left: 3px solid var(--accent-green); padding-left: 1rem;">
+                            <strong>Kai Voice Engine:</strong> Powered by Geneline STT specialized in West African
+                            accents.
+                        </li>
+                        <li
+                            style="margin-bottom: 1rem; border-left: 3px solid var(--accent-green); padding-left: 1rem;">
+                            <strong>Translation Layer:</strong> Krio to English mapping for high-precision clinical
+                            reasoning.
+                        </li>
+                        <li
+                            style="margin-bottom: 1rem; border-left: 3px solid var(--accent-green); padding-left: 1rem;">
+                            <strong>Intent Extraction:</strong> Isolating symptoms (e.g., "Heat", "Pain") from
+                            conversational noise.
+                        </li>
+                    </ul>
+                </div>
+                <div class="code-block">
+                    {
+                    "input": "audio/ogg",
+                    "raw_transcript": "pikin get bɔkun bɛlɛ-at",
+                    "translation": "Child has severe stomach pain",
+                    "entities": ["symptom:stomach_ache", "intensity:severe"],
+                    "confidence": 0.94
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: User Flow: Agentic Reasoning -->
+        <div class="slide" id="slide-8">
+            <div class="tagline">PHASE 2: AGENTIC GUARDRAILS</div>
+            <h2>Smart Clinical Logic</h2>
+            <div class="grid-2">
+                <div class="bento-item">
+                    <h3>Chain-of-Thought (CoT)</h3>
+                    <p style="font-size: 0.95rem;">Our AI agents are programmed with a multi-step reasoning protocol.
+                        They don't just guess; they follow a verify-and-validate loop.</p>
+                    <div class="code-block" style="color: var(--accent-blue);">
+                        1. Identify primary symptom.<br>
+                        2. Query SL-STG clinical guidelines.<br>
+                        3. Determine "Red-Flag" exclusions.<br>
+                        4. Ask diagnostic follow-up.<br>
+                        5. Provide Triage Classification.
+                    </div>
+                </div>
+                <div style="text-align: left;">
+                    <h3>RAG (Retrieval Augmented Generation)</h3>
+                    <p class="text-left">To prevent "AI Hallucinations," our bot is restricted to a verified medical
+                        database. If the answer isn't in the verified guidelines, it escalates to a human instead of
+                        making it up.</p>
+                    <p class="text-left mt-4"
+                        style="background: rgba(59, 130, 246, 0.1); border-radius: 12px; padding: 1.5rem; font-size: 1rem;">
+                        <strong>Auditability:</strong> Every response includes a "Citation Source" in our backend,
+                        allowing medical directors to trace <i>why</i> the AI gave specific advice.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: DEMO 1: Patient Experience -->
+        <div class="slide" id="slide-9">
+            <div class="tagline">LIVE SIMULATION</div>
+            <h2>In the Hands of the Patient</h2>
+            <div class="grid-2">
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-header">
+                        <div
+                            style="width: 35px; height: 35px; background: #999; border-radius: 50%; margin-right: 12px;">
+                        </div>
+                        <div>
+                            <div style="font-weight: bold; font-size: 14px;">Kai Health Bot</div>
+                            <div style="font-size: 10px; opacity: 0.8;">24/7 Medical Triage</div>
+                        </div>
+                    </div>
+                    <div class="phone-body">
+                        <div class="msg sent audio">
+                            <div class="play-btn"></div> 🎤 "Mi pikin get fiba..."
+                        </div>
+                        <div class="msg received">A ɔndastand se di pikin get heat. Since it is night, can you check his
+                            neck? Is it stiff or soft?</div>
+                        <div class="msg sent">E stif-stif.</div>
+                        <div class="msg received" style="background: #FFEBEB; border: 1px solid #FFCCCC;">
+                            🚨 <strong>DANGER SIGN!</strong> Stiff neck + Fever in children is a clinical emergency
+                            (Possible Meningitis).
+                            <br><br>
+                            Proceed to Makeni Government Hospital NOW. I have alerted the duty officer.
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: left;">
+                    <h3>Empowering Immediate Action</h3>
+                    <p class="text-left">By identifying "Danger Signs" in seconds, we bypass the fatal delay of
+                        "watching and waiting" at home.</p>
+                    <ul class="list-rich mt-4">
+                        <li>Instant classification of severity.</li>
+                        <li>Culturally adapted Krio responses.</li>
+                        <li>Clear, actionable instructions.</li>
+                        <li>Connection to the care network.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: NEW: DEMO 2: Admin Dashboard -->
+        <div class="slide" id="slide-10">
+            <div class="tagline">HUMAN-IN-THE-LOOP</div>
+            <h2>The Doctor's Command Center</h2>
+            <div class="dash-mockup">
+                <div class="dash-sidebar">
+                    <div style="height: 10px; background: #222; width: 100%; border-radius: 5px; margin-bottom: 2rem;">
+                    </div>
+                    <div style="height: 10px; background: #333; width: 80%; border-radius: 5px; margin-bottom: 1rem;">
+                    </div>
+                    <div style="height: 10px; background: #222; width: 60%; border-radius: 5px; margin-bottom: 1rem;">
+                    </div>
+                </div>
+                <div class="dash-content">
+                    <div class="dash-header">
+                        <div style="font-weight: bold; font-size: 1.2rem;">Live Escalation Queue</div>
+                        <div style="color: var(--accent-red); font-weight: bold;">🚨 3 ACTIVE ALERTS</div>
+                    </div>
+                    <div class="dash-grid">
+                        <div class="dash-widget" style="border-left: 4px solid var( --accent-red);">
+                            <h3 style="font-size: 1rem;">Patient: Sarah B.</h3>
+                            <p style="font-size: 0.8rem; color: #888;">Symptoms: High Fever, Stiff Neck</p>
+                            <div
+                                style="background: rgba(239, 68, 68, 0.2); width: fit-content; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; margin-top: 10px;">
+                                URGENT</div>
+                        </div>
+                        <div class="dash-widget" style="border-left: 4px solid var(--accent-blue);">
+                            <h3 style="font-size: 1rem;">Patient: Abu K.</h3>
+                            <p style="font-size: 0.8rem; color: #888;">Topic: Maternal Care (Month 8)</p>
+                            <div
+                                style="background: rgba(59, 130, 246, 0.2); width: fit-content; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; margin-top: 10px;">
+                                ROUTINE</div>
+                        </div>
+                        <div class="dash-widget">
+                            <h3 style="font-size: 1rem;">System Status</h3>
+                            <p style="font-size: 0.8rem; color: #888;">99.9% Uptime</p>
+                            <p style="font-size: 0.8rem; color: #888;">Railway Cluster: ON</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 2rem; font-size: 0.9rem; text-align: left;">The dashboard (Next.js 14) allows
+                        health officials to monitor real-time symptom clusters, managing high-risk escalations before
+                        they become fatalities.</p>
+                </div>
+            </div>
+            <p class="mt-4" style="font-size: 1rem;">Our dashboard provides <strong>Epidemiological
+                    Intelligence</strong>, showing the government where disease is spreading before patients even reach
+                the clinic.</p>
+        </div>
+
+        <!-- Slide 11: Technical Deep Dive: Multi-Agent Orchestration -->
+        <div class="slide" id="slide-11">
+            <div class="tagline">THE BRAIN</div>
+            <h2>Agentic Orchestration</h2>
+            <div class="grid-2">
+                <div style="text-align: left;">
+                    <h3>The Specialist Approach</h3>
+                    <p class="text-left">We don't use one giant model. We use a hierarchy of task-specific agents:</p>
+                    <ul class="list-rich" style="font-size: 1rem;">
+                        <li><strong>The Router:</strong> Classifies intent (Medical vs. General).</li>
+                        <li><strong>The Triage Agent:</strong> Expert in symtom-rule cross-referencing.</li>
+                        <li><strong>The Translator:</strong> Ensures semantic fidelity from Krio to Medical-English.
+                        </li>
+                        <li><strong>The Audit Agent:</strong> Checks the final output for safety violations.</li>
+                    </ul>
+                </div>
+                <div class="code-block" style="color: #fff;">
+                    // Orchestration Pipeline
+                    const intent = await router.classify(query);
+                    if (intent === 'MEDICAL') {
+                    const symptoms = await extractor.parse(query);
+                    const advice = await triageExpert.resolve(symptoms);
+                    const safe_advice = await safetyAuditor.verify(advice);
+                    return safe_advice;
+                    }
+                </div>
+            </div>
+            <p class="mt-4" style="font-size: 0.95rem;">This "Modular AI" approach ensures
+                <strong>Explainability</strong>. We can see exactly which agent made which decision.
+            </p>
+        </div>
+
+        <!-- Slide 12: The Agent Loop (NEW - from codebase) -->
+        <div class="slide" id="slide-12">
+            <div class="tagline">UNDER THE HOOD</div>
+            <h2>The Agent Loop</h2>
+            <div class="grid-2">
+                <div style="text-align: left;">
+                    <h3>Multi-Iteration Reasoning</h3>
+                    <p class="text-left">Unlike simple chatbots, Kai uses an <strong>iterative agent loop</strong> that
+                        can call specialized tools and refine its response up to 5 times before answering.</p>
+                    <ul style="list-style: none; margin-top: 1.5rem;">
+                        <li
+                            style="margin-bottom: 1rem; border-left: 3px solid var(--accent-green); padding-left: 1rem;">
+                            <strong>Step 1:</strong> Build prompt with conversation history
+                        </li>
+                        <li style="margin-bottom: 1rem; border-left: 3px solid var(--accent-blue); padding-left: 1rem;">
+                            <strong>Step 2:</strong> Send to Geneline-X AI for reasoning
+                        </li>
+                        <li
+                            style="margin-bottom: 1rem; border-left: 3px solid var(--accent-purple); padding-left: 1rem;">
+                            <strong>Step 3:</strong> If tool call detected → Execute tool → Loop back
+                        </li>
+                        <li style="margin-bottom: 1rem; border-left: 3px solid var(--accent-red); padding-left: 1rem;">
+                            <strong>Step 4:</strong> Final response → Check for escalation triggers
+                        </li>
+                    </ul>
+                </div>
+                <div class="code-block" style="color: #25D366; font-size: 0.75rem;">
+                    // agent-loop.ts (REAL CODE)<br>
+                    while (iterations < this.maxIterations) {<br>
+                        &nbsp;&nbsp;iterations++;<br>
+                        &nbsp;&nbsp;const prompt = this.promptBuilder.buildPrompt(<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;userMessage, historyText, true, userRole<br>
+                        &nbsp;&nbsp;);<br>
+                        &nbsp;&nbsp;const response = await this.callGeneline(prompt);<br>
+                        &nbsp;&nbsp;const toolCall = this.toolRegistry.parseToolCall(response);<br><br>
+                        &nbsp;&nbsp;if (!toolCall) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;// Final response - check for escalation<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return { response, toolCallsCount, iterations };<br>
+                        &nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;// Execute tool and continue loop...<br>
+                        }
+                </div>
+            </div>
+            <p class="mt-4" style="font-size: 0.95rem;">This loop ensures Kai <strong>thinks before
+                    speaking</strong>—verifying symptoms against guidelines before giving advice.</p>
+        </div>
+
+        <!-- Slide 13: The "Hack" (Innovation) -->
+        <div class="slide" id="slide-12">
+            <div class="tagline">ENGINEERING EXCELLENCE</div>
+            <h2>The Secret Sauce</h2>
+            <div class="grid-2">
+                <div class="bento-item">
+                    <h3>The Headless Relay 🕸️</h3>
+                    <p style="font-size: 0.9rem;">To keep costs zero for NGOs, we built a custom transport using
+                        <code>whatsapp-web.js</code> and Puppeteer. It bypasses the 24-hour Enterprise API fee
+                        structure, allowing for <b>unlimited conversation depth</b> at zero cost per user.
+                    </p>
+                </div>
+                <div class="bento-item">
+                    <h3>Phonetic Fuzzy Matching 🧩</h3>
+                    <p style="font-size: 0.9rem;">Krio spellings vary by person ("feba" vs "fiber"). We developed a
+                        <b>Weighted Levenshtein Algorithm</b> that prioritizes phonetic similarity over literal
+                        character matches, mapping thousands of slang variations to specific WHO ICD-11 codes.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Symptom Triage Engine (NEW - from codebase) -->
+        <div class="slide" id="slide-14">
+            <div class="tagline">CLINICAL INTELLIGENCE</div>
+            <h2>The Symptom Triage Engine</h2>
+            <div class="grid-2">
+                <div style="text-align: left;">
+                    <h3>Urgency Classification System</h3>
+                    <p class="text-left">Our symptom database categorizes every health complaint into 4 urgency levels
+                        with <strong>bilingual guidance</strong> (English + Krio).</p>
+                    <div class="mt-4" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div
+                            style="background: rgba(239, 68, 68, 0.15); padding: 1rem; border-radius: 12px; border-left: 4px solid var(--accent-red);">
+                            <strong style="color: var(--accent-red);">🚨 EMERGENCY</strong>
+                            <p style="font-size: 0.8rem; margin-top: 0.5rem;">Convulsions, Severe Bleeding, Unconscious
+                            </p>
+                        </div>
+                        <div
+                            style="background: rgba(251, 191, 36, 0.15); padding: 1rem; border-radius: 12px; border-left: 4px solid #fbbf24;">
+                            <strong style="color: #fbbf24;">⚠️ URGENT</strong>
+                            <p style="font-size: 0.8rem; margin-top: 0.5rem;">High Fever, Severe Vomiting, Chest Pain
+                            </p>
+                        </div>
+                        <div
+                            style="background: rgba(59, 130, 246, 0.15); padding: 1rem; border-radius: 12px; border-left: 4px solid var(--accent-blue);">
+                            <strong style="color: var(--accent-blue);">🔶 MODERATE</strong>
+                            <p style="font-size: 0.8rem; margin-top: 0.5rem;">Cough, Headache, Mild Diarrhea</p>
+                        </div>
+                        <div
+                            style="background: rgba(37, 211, 102, 0.15); padding: 1rem; border-radius: 12px; border-left: 4px solid var(--accent-green);">
+                            <strong style="color: var(--accent-green);">✅ ROUTINE</strong>
+                            <p style="font-size: 0.8rem; margin-top: 0.5rem;">Mild Stomach, General Wellness</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="code-block" style="color: #fff; font-size: 0.7rem;">
+                    // symptom-triage-tool.ts (REAL CODE)<br><br>
+                    'convulsions': {<br>
+                    &nbsp;&nbsp;urgency: 'emergency',<br>
+                    &nbsp;&nbsp;englishAdvice: '🚨 EMERGENCY: Convulsions<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;require immediate medical care!',<br>
+                    &nbsp;&nbsp;krioAdvice: '🚨 EMƐJƐNSI: Fit de kech am<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;nid kwik ɛlp! Go ɔspitul naw!',<br>
+                    &nbsp;&nbsp;referralNeeded: true,<br>
+                    },<br><br>
+                    'mild_fever': {<br>
+                    &nbsp;&nbsp;urgency: 'moderate',<br>
+                    &nbsp;&nbsp;homeCare: ['Take paracetamol', 'Drink fluids'],<br>
+                    &nbsp;&nbsp;krioHomeCare: ['Tek paracetamol', 'Drink wata'],<br>
+                    &nbsp;&nbsp;referralNeeded: false,<br>
+                    }
+                </div>
+            </div>
+            <p class="mt-4" style="font-size: 0.95rem;">Each symptom entry includes <strong>follow-up
+                    questions</strong>, <strong>home care tips</strong>, and <strong>referral triggers</strong>—all in
+                both languages.</p>
+        </div>
+
+        <!-- Slide 15: Krio NLP Deep Dive (NEW - from codebase) -->
+        <div class="slide" id="slide-15">
+            <div class="tagline">LANGUAGE ENGINEERING</div>
+            <h2>The Krio NLP Engine</h2>
+            <div class="grid-2">
+                <div style="text-align: left;">
+                    <h3>800+ Lines of Dialect Mapping</h3>
+                    <p class="text-left">Krio has no standardized spelling. "Headache" can be written 12 different ways.
+                        Our <strong>fuzzy matching library</strong> handles them all.</p>
+                    <div class="mt-4"
+                        style="background: rgba(139, 92, 246, 0.1); border-radius: 12px; padding: 1.5rem;">
+                        <p style="font-size: 0.9rem; color: #fff; margin-bottom: 1rem;"><strong>Example: "Headache"
+                                Variations</strong></p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <span
+                                style="background: #222; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-family: monospace;">edek</span>
+                            <span
+                                style="background: #222; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-family: monospace;">edik</span>
+                            <span
+                                style="background: #222; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-family: monospace;">ɛdɛk</span>
+                            <span
+                                style="background: #222; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-family: monospace;">a
+                                get edek</span>
+                            <span
+                                style="background: #222; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-family: monospace;">ed
+                                de wori</span>
+                            <span
+                                style="background: #222; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-family: monospace;">ɛd
+                                de pɛn</span>
+                            <span
+                                style="background: #222; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-family: monospace;">my
+                                ed pain</span>
+                            <span
+                                style="background: #222; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-family: monospace;">edik
+                                de kilmi</span>
+                        </div>
+                    </div>
+                    <p class="text-left mt-4" style="font-size: 0.9rem;">All 8 variations map to the same
+                        <code>headache</code> symptom in our triage database.
+                    </p>
+                </div>
+                <div class="code-block" style="color: #8b5cf6; font-size: 0.7rem;">
+                    // krio-phrases.ts (800+ LINES)<br><br>
+                    export const krioSymptomVariations = {<br>
+                    &nbsp;&nbsp;headache: [<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;'edek', 'edik', 'ɛdɛk',<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;'a get edek', 'agat edik',<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;'ed de wori', 'ed de pen',<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;'ɛd de wɔri', 'ɛd de pɛn',<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;'my ed pain', 'edik de kilmi'<br>
+                    &nbsp;&nbsp;],<br>
+                    &nbsp;&nbsp;fever: [<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;'fiba', 'feba', 'fever', 'feva',<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;'bodi ot', 'bɔdi ɔt', 'hot body',<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;'a get fiba', 'temperature'<br>
+                    &nbsp;&nbsp;],<br>
+                    &nbsp;&nbsp;malaria: [<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;'malaria', 'maleria', 'palidis',<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;'cold ketch mi', 'shaking'<br>
+                    &nbsp;&nbsp;],<br>
+                    };
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Dashboard Analytics (NEW - from codebase) -->
+        <div class="slide" id="slide-16">
+            <div class="tagline">REAL-TIME INTELLIGENCE</div>
+            <h2>Dashboard Analytics Engine</h2>
+            <div class="grid-2">
+                <div style="text-align: left;">
+                    <h3>Live Data with 10-Second Refresh</h3>
+                    <p class="text-left">Our Next.js 14 dashboard uses <strong>SWR (Stale-While-Revalidate)</strong> for
+                        real-time data without page reloads. Health officials see live updates as patients message Kai.
+                    </p>
+                    <div class="mt-4" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div
+                            style="background: var(--card-bg); border: 2px solid #333; padding: 1rem; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-green);">2,847</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">TOTAL USERS</div>
+                        </div>
+                        <div
+                            style="background: var(--card-bg); border: 2px solid #333; padding: 1rem; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-blue);">342</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">TODAY'S MESSAGES</div>
+                        </div>
+                        <div
+                            style="background: var(--card-bg); border: 2px solid #333; padding: 1rem; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-purple);">98.7%</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">SUCCESS RATE</div>
+                        </div>
+                        <div
+                            style="background: var(--card-bg); border: 2px solid #333; padding: 1rem; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-red);">3</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">PENDING ESCALATIONS</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="code-block" style="color: #3B82F6; font-size: 0.7rem;">
+                    // dashboard/page.tsx (REAL CODE)<br><br>
+                    const { data: stats } = useSWR(<br>
+                    &nbsp;&nbsp;"dashboardStats",<br>
+                    &nbsp;&nbsp;getDashboardStats,<br>
+                    &nbsp;&nbsp;{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;refreshInterval: 10000, // 10 sec refresh<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;revalidateOnFocus: true,<br>
+                    &nbsp;&nbsp;}<br>
+                    );<br><br>
+                    // Charts auto-update every 30 seconds<br>
+                    const { data: messageTrend } = useSWR(<br>
+                    &nbsp;&nbsp;"messageTrend",<br>
+                    &nbsp;&nbsp;() => getMessageTrend(7),<br>
+                    &nbsp;&nbsp;{ refreshInterval: 30000 }<br>
+                    );
+                </div>
+            </div>
+            <p class="mt-4" style="font-size: 0.95rem;">Charts include <strong>Message Trends</strong>, <strong>Intent
+                    Distribution</strong>, <strong>Peak Hours</strong>, and <strong>Recent Activity</strong> logs.</p>
+        </div>
+
+        <!-- Slide 17: Data & Privacy -->
+        <div class="slide" id="slide-13">
+            <div class="tagline">TRUST & GOVERNANCE</div>
+            <h2>Patient Data Security</h2>
+            <div class="grid-3">
+                <div class="stat-card">
+                    <div style="font-size: 2.5rem;">🔐</div>
+                    <h3>E2E Encrypted</h3>
+                    <p style="font-size: 0.9rem;">Leveraging WhatsApp's native Signal protocol. Data is encrypted before
+                        it ever leaves the user's phone.</p>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size: 2.5rem;">🛑</div>
+                    <h3>PII Stripping</h3>
+                    <p style="font-size: 0.9rem;">Our backend automatically redacts "Personally Identifiable
+                        Information" before symptoms are sent to the AI engine.</p>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size: 2.5rem;">⚖️</div>
+                    <h3>GDPR Prepared</h3>
+                    <p style="font-size: 0.9rem;">Built with data sovereignty in mind. All clinical logs are stored on
+                        secure local clusters for Ministry of Health audit.</p>
+                </div>
+            </div>
+            <p class="mt-4">In healthcare, <strong>Trust</strong> is as important as <strong>Tech</strong>.</p>
+        </div>
+
+        <!-- Slide 17: Escalation Workflow (NEW - from codebase) -->
+        <div class="slide" id="slide-17">
+            <div class="tagline">HUMAN-IN-THE-LOOP</div>
+            <h2>The Escalation Pipeline</h2>
+            <div class="grid-2">
+                <div style="text-align: left;">
+                    <h3>From Detection to Resolution</h3>
+                    <p class="text-left">When Kai detects a case beyond its scope, it creates an <strong>escalation
+                            record</strong> with full context for health workers to respond.</p>
+                    <ul style="list-style: none; margin-top: 1.5rem;">
+                        <li style="margin-bottom: 1rem; border-left: 3px solid var(--accent-red); padding-left: 1rem;">
+                            <strong>1. AI triggers [ESCALATE: reason]</strong><br>
+                            <span style="font-size: 0.85rem; color: #888;">Emergency symptoms, user frustration, or
+                                explicit request</span>
+                        </li>
+                        <li style="margin-bottom: 1rem; border-left: 3px solid var(--accent-blue); padding-left: 1rem;">
+                            <strong>2. Escalation record created</strong><br>
+                            <span style="font-size: 0.85rem; color: #888;">Priority badge, user info, conversation
+                                summary</span>
+                        </li>
+                        <li
+                            style="margin-bottom: 1rem; border-left: 3px solid var(--accent-purple); padding-left: 1rem;">
+                            <strong>3. Health worker assigns case</strong><br>
+                            <span style="font-size: 0.85rem; color: #888;">Dashboard shows live queue with status</span>
+                        </li>
+                        <li
+                            style="margin-bottom: 1rem; border-left: 3px solid var(--accent-green); padding-left: 1rem;">
+                            <strong>4. Response sent via Bot API</strong><br>
+                            <span style="font-size: 0.85rem; color: #888;">Message delivered directly to patient's
+                                WhatsApp</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="code-block" style="color: #ef4444; font-size: 0.68rem;">
+                    // lib/actions/escalations.ts (REAL CODE)<br><br>
+                    export async function sendEscalationResponse(<br>
+                    &nbsp;&nbsp;id: string, phone: string, message: string<br>
+                    ) {<br>
+                    &nbsp;&nbsp;// Send message via bot API<br>
+                    &nbsp;&nbsp;const response = await fetch(<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;`${BOT_API_URL}/send`,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;method: "POST",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body: JSON.stringify({ phone, message })<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;);<br><br>
+                    &nbsp;&nbsp;// Update escalation status<br>
+                    &nbsp;&nbsp;await supabase.from("escalations")<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;.update({ status: "in_progress" })<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;.eq("id", id);<br>
+                    }
+                </div>
+            </div>
+            <p class="mt-4" style="font-size: 0.95rem;">Average response time: <strong>under 5 minutes</strong> from
+                escalation to human contact.</p>
+        </div>
+
+        <!-- Slide 18: Validation & Metrics -->
+        <div class="slide" id="slide-14">
+            <div class="tagline">THE EVIDENCE</div>
+            <h2>Performance Benchmarks</h2>
+            <div class="grid-3">
+                <div class="stat-card" style="border-top: 4px solid var(--accent-green);">
+                    <div class="stat-number text-green">88%</div>
+                    <div class="stat-label">Triage Accuracy</div>
+                    <p style="font-size: 0.85rem;">Matching clinical nurse benchmarks for Malaria and URTI
+                        classification during beta tests.</p>
+                </div>
+                <div class="stat-card" style="border-top: 4px solid var(--accent-blue);">
+                    <div class="stat-number">92%</div>
+                    <div class="stat-label">Language Match</div>
+                    <p style="font-size: 0.85rem;">Successful intent extraction from slang-heavy Krio voice notes across
+                        500+ diverse audio samples.</p>
+                </div>
+                <div class="stat-card" style="border-top: 4px solid var(--accent-purple);">
+                    <div class="stat-number">2.1s</div>
+                    <div class="stat-label">Avg Latency</div>
+                    <p style="font-size: 0.85rem;">From user message sent to AI advice received. Faster than searching
+                        Google (if they even had data).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Competitive Landscape -->
+        <div class="slide" id="slide-15">
+            <div class="tagline">MARKET POSITION</div>
+            <h2>Built for the Emerging Market</h2>
+            <div class="table-container">
+                <div class="comparison-row comparison-header">
+                    <div>VALUE PROP</div>
+                    <div style="text-align: center;">Kai</div>
+                    <div style="text-align: center;">GLOBAL APPS</div>
+                    <div style="text-align: center;">TELE-HEALTH</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature-name">Works on 2G/3G (Low Data)</div>
+                    <div style="text-align: center;" class="dot green"></div>
+                    <div style="text-align: center;" class="dot gray"></div>
+                    <div style="text-align: center;" class="dot gray"></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature-name">Native Krio Support</div>
+                    <div style="text-align: center;" class="dot green"></div>
+                    <div style="text-align: center;" class="dot gray"></div>
+                    <div style="text-align: center;" class="dot gray"></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature-name">Zero-Friction Access</div>
+                    <div style="text-align: center;" class="dot green"></div>
+                    <div style="text-align: center;" class="dot gray"></div>
+                    <div style="text-align: center;" class="dot gray"></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature-name">Public Health Insight (DaaS)</div>
+                    <div style="text-align: center;" class="dot green"></div>
+                    <div style="text-align: center;" class="dot gray"></div>
+                    <div style="text-align: center;" class="dot gray"></div>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; font-size: 1rem;">Global competitors build for high-end smartphones in developed
+                markets. <b>We build for the users left behind.</b></p>
+        </div>
+
+        <!-- Slide 16: Business Strategy -->
+        <div class="slide" id="slide-16">
+            <div class="tagline">SUSTAINABILITY</div>
+            <h2>From Project to Platform</h2>
+            <div class="grid-3 mt-4">
+                <div class="bento-item">
+                    <h3>🏛️ Gov & NGO (B2G)</h3>
+                    <p class="bento-desc">Licensing the platform to health ministries for disease surveillance.
+                        $20k-$100k annual contracts per country.</p>
+                </div>
+                <div class="bento-item">
+                    <h3>💊 Data Insights (DaaS)</h3>
+                    <p class="bento-desc">Providing anonymized symptom-spread data to pharmaceutical distributors to
+                        optimize supply chains in rural areas.</p>
+                </div>
+                <div class="bento-item">
+                    <h3>🤝 Freemium Model</h3>
+                    <p class="bento-desc">Basic triage is free for all. Guaranteed 5-minute connection to a private
+                        specialist is a premium paid service.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Market Expansion -->
+        <div class="slide" id="slide-17">
+            <div class="tagline">SCALABILITY</div>
+            <h2>Sierra Leone and Beyond</h2>
+            <div class="grid-2">
+                <div style="text-align: left;">
+                    <h3>Phase 1: Deep Rooting</h3>
+                    <p class="text-left">National scale in Sierra Leone (8M population, 90% WhatsApp use).</p>
+                    <h3 class="mt-4">Phase 2: West Africa Expansion</h3>
+                    <p class="text-left">Deploying to the MRU (Mano River Union) region: Liberia and Gambia. These
+                        markets share similar dialects and healthcare deficits.</p>
+                    <h3 class="mt-4">Phase 3: The Global South</h3>
+                    <p class="text-left">Adapting the engine for <strong>Swahili (East Africa)</strong> and
+                        <strong>Hausa (Nigeria)</strong> to reach 200M+ users.
+                    </p>
+                </div>
+                <div
+                    style="background: rgba(59, 130, 246, 0.05); padding: 2rem; border-radius: 20px; text-align: center;">
+                    <div style="font-size: 4rem; color: var(--accent-blue);">🌍</div>
+                    <p class="mt-2" style="font-weight: bold; color: #fff;">400 MILLION+</p>
+                    <p style="font-size: 0.9rem;">Total Addressable WhatsApp Users in West Africa with limited
+                        healthcare.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: The Team -->
+        <div class="slide" id="slide-18">
+            <div class="tagline">THE BUILDERS</div>
+            <h2>Engineering for Equity</h2>
+            <div class="grid-2">
+                <div class="bento-item">
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: #333;"></div>
+                        <div>
+                            <div style="font-weight: bold;">Julius M Sandi</div>
+                            <div style="font-size: 0.8rem; color: var(--accent-green);">PTech FOUNDER & LEAD ENGINEER
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: left;">
+                    <h3>The DNA of PTech</h3>
+                    <p class="text-left">We are a team that understands both sides of the bridge: We speak the language
+                        of medical guidelines and the language of low-latency Node.js infrastructure.</p>
+                    <div class="mt-4" style="font-size: 1rem; color: #888;">
+                        • Specialist in West African NLP Patterns<br>
+                        • Expert in Low-Resource Infrastructure<br>
+                        • Deep understanding of Sierra Leone health policy
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 19: 12-Month Execution Roadmap -->
+        <div class="slide" id="slide-19">
+            <div class="tagline">EXECUTION</div>
+            <h2>Roadmap to 1 Million</h2>
+            <div class="timeline">
+                <div class="timeline-item active">
+                    <div class="timeline-label">Q1: THE FOUNDATION</div>
+                    <p style="font-size: 0.8rem;">Live MVP. 1,000 Beta Users. MOU with 2 local NGO clinics.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">Q2: INTEGRATION</div>
+                    <p style="font-size: 0.8rem;">Direct integration into the government's District Health Information
+                        System (DHIS2).</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">Q3: VISION ADD</div>
+                    <p style="font-size: 0.8rem;">Computer Vision for wound/rash analysis integrated into the chat flow.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">Q4: REGIONAL OPS</div>
+                    <p style="font-size: 0.8rem;">Market entry into Liberia. First 100k active users milestones.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Closing & The Ask -->
+        <div class="slide" id="slide-15">
+            <div class="glow" style="background: var(--accent-purple);"></div>
+            <h1>Let's Debug Healthcare.</h1>
+            <p style="margin-bottom: 2.5rem; color: #fff;">We are seeking partnerships and mentorship to turn this hack
+                into a national utility.</p>
+
+            <div class="grid-2" style="max-width: 850px;">
+                <div
+                    style="text-align: center; background: #111; padding: 2.5rem; border-radius: 20px; border: 1px solid #222;">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📞</div>
+                    <div style="color: var(--accent-green); font-weight: 800; font-size: 1.5rem;">+232 75 332939</div>
+                    <div style="font-size: 0.9rem; color: #555;">SAY "HELLO" IN KRIO</div>
+                </div>
+                <div
+                    style="text-align: center; background: #111; padding: 2.5rem; border-radius: 20px; border: 1px solid #222;">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🐙</div>
+                    <div style="color: #fff; font-weight: 800; font-size: 1.5rem;">github.com/Jmsandi</div>
+                    <div style="font-size: 0.9rem; color: #555;">FOR THE SOURCE CODE</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 4rem; opacity: 0.3; font-size: 0.8rem; font-family: monospace;">{ "vision": "Health
+                Equity", "status": "Executing", "impact_target": "8M lives" }</p>
+        </div>
+
+    </div>
+
+    <div class="controls">
+        <button class="nav-btn" onclick="prevSlide()">←</button>
+        <button class="nav-btn" onclick="nextSlide()">→</button>
+    </div>
+
+    <div class="progress-bar" id="progress"></div>
+    <div class="slide-number" id="slide-number"></div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const progress = document.getElementById('progress');
+        const slideNumberDisplay = document.getElementById('slide-number');
+        const TOTAL_SLIDES = slides.length;
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+
+            const progressPercent = ((currentSlide + 1) / TOTAL_SLIDES) * 100;
+            progress.style.width = `${progressPercent}%`;
+            slideNumberDisplay.innerText = `${(currentSlide + 1).toString().padStart(2, '0')} / ${TOTAL_SLIDES}`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < TOTAL_SLIDES - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Touch Support
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleGesture();
+        });
+
+        function handleGesture() {
+            if (touchendX < touchstartX - 50) {
+                nextSlide();
+            }
+            if (touchendX > touchstartX + 50) {
+                prevSlide();
+            }
+        }
+
+        updateSlide();
+    </script>
+</body>
+
+</html>
