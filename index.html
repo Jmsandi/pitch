@@ -780,14 +780,18 @@
                         </li>
                     </ul>
                 </div>
-                <div class="code-block">
-                    {
-                    "input": "audio/ogg",
-                    "raw_transcript": "pikin get bɔkun bɛlɛ-at",
-                    "translation": "Child has severe stomach pain",
-                    "entities": ["symptom:stomach_ache", "intensity:severe"],
-                    "confidence": 0.94
-                    }
+                <div class="stat-card"
+                    style="background: rgba(37, 211, 102, 0.05); border-color: rgba(37, 211, 102, 0.2);">
+                    <div style="font-size: 1rem; font-weight: bold; color: var(--accent-green); margin-bottom: 1rem;">
+                        INTELLIGENT PARSING</div>
+                    <p
+                        style="text-align: left; font-size: 0.9rem; font-style: italic; color: #fff; margin-bottom: 0.5rem;">
+                        "Pikin get bɔkun bɛlɛ-at"</p>
+                    <div style="margin: 0.5rem 0; font-size: 1.2rem; text-align: center;">⬇️</div>
+                    <p style="text-align: left; font-size: 0.9rem; font-weight: bold; margin-bottom: 0.3rem;">[Clinical
+                        Intent Identified]</p>
+                    <p style="text-align: left; font-size: 0.8rem; color: #888;">Severity: High<br>Symptom: Severe
+                        Abdominal Pain</p>
                 </div>
             </div>
         </div>
@@ -801,12 +805,15 @@
                     <h3>Chain-of-Thought (CoT)</h3>
                     <p style="font-size: 0.95rem;">Our AI agents are programmed with a multi-step reasoning protocol.
                         They don't just guess; they follow a verify-and-validate loop.</p>
-                    <div class="code-block" style="color: var(--accent-blue);">
-                        1. Identify primary symptom.<br>
-                        2. Query SL-STG clinical guidelines.<br>
-                        3. Determine "Red-Flag" exclusions.<br>
-                        4. Ask diagnostic follow-up.<br>
-                        5. Provide Triage Classification.
+                    <div class="stat-card"
+                        style="background: rgba(59, 130, 246, 0.05); border-color: rgba(59, 130, 246, 0.2); padding: 1.5rem;">
+                        <ul style="list-style: none; text-align: left; font-size: 0.85rem;">
+                            <li style="margin-bottom: 0.6rem;">✅ Verify Primary Symptoms</li>
+                            <li style="margin-bottom: 0.6rem;">✅ Cross-Reference Guidelines</li>
+                            <li style="margin-bottom: 0.6rem;">✅ Check for "Red-Flag" Danger Signs</li>
+                            <li style="margin-bottom: 0.6rem;">✅ Confirm with User</li>
+                            <li>✅ Issue Final Triage Guidance</li>
+                        </ul>
                     </div>
                 </div>
                 <div style="text-align: left;">
@@ -868,9 +875,9 @@
             </div>
         </div>
 
-        <!-- Slide 10: NEW: DEMO 2: Admin Dashboard -->
+        <!-- Slide 10: Health Intelligence: The Doctor's Command Center -->
         <div class="slide" id="slide-10">
-            <div class="tagline">HUMAN-IN-THE-LOOP</div>
+            <div class="tagline">HEALTH INTELLIGENCE</div>
             <h2>The Doctor's Command Center</h2>
             <div class="dash-mockup">
                 <div class="dash-sidebar">
@@ -883,7 +890,7 @@
                 </div>
                 <div class="dash-content">
                     <div class="dash-header">
-                        <div style="font-weight: bold; font-size: 1.2rem;">Live Escalation Queue</div>
+                        <div style="font-weight: bold; font-size: 1.2rem;">Live Health Surveillance</div>
                         <div style="color: var(--accent-red); font-weight: bold;">🚨 3 ACTIVE ALERTS</div>
                     </div>
                     <div class="dash-grid">
@@ -902,14 +909,35 @@
                                 ROUTINE</div>
                         </div>
                         <div class="dash-widget">
-                            <h3 style="font-size: 1rem;">System Status</h3>
-                            <p style="font-size: 0.8rem; color: #888;">99.9% Uptime</p>
-                            <p style="font-size: 0.8rem; color: #888;">Railway Cluster: ON</p>
+                            <h3 style="font-size: 1rem;">Platform Health</h3>
+                            <p style="font-size: 0.8rem; color: #888;">99.9% Core Uptime</p>
+                            <p style="font-size: 0.8rem; color: #888;">Cloud Infrastructure: ACTIVE</p>
                         </div>
                     </div>
-                    <p style="margin-top: 2rem; font-size: 0.9rem; text-align: left;">The dashboard (Next.js 14) allows
-                        health officials to monitor real-time symptom clusters, managing high-risk escalations before
-                        they become fatalities.</p>
+
+                    {/* Integrated Analytics */}
+                    <div class="mt-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem;">
+                        <div
+                            style="background: #1a1a1a; border: 1px solid #333; padding: 0.8rem; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent-green);">2,847</div>
+                            <div style="font-size: 0.6rem; color: var(--text-secondary);">TOTAL USERS</div>
+                        </div>
+                        <div
+                            style="background: #1a1a1a; border: 1px solid #333; padding: 0.8rem; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent-blue);">342</div>
+                            <div style="font-size: 0.6rem; color: var(--text-secondary);">MESSAGES TODAY</div>
+                        </div>
+                        <div
+                            style="background: #1a1a1a; border: 1px solid #333; padding: 0.8rem; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent-purple);">98.7%</div>
+                            <div style="font-size: 0.6rem; color: var(--text-secondary);">ACCURACY</div>
+                        </div>
+                        <div
+                            style="background: #1a1a1a; border: 1px solid #333; padding: 0.8rem; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent-red);">3</div>
+                            <div style="font-size: 0.6rem; color: var(--text-secondary);">ACTIVE REPORTS</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <p class="mt-4" style="font-size: 1rem;">Our dashboard provides <strong>Epidemiological
@@ -917,87 +945,10 @@
                 the clinic.</p>
         </div>
 
-        <!-- Slide 11: Technical Deep Dive: Multi-Agent Orchestration -->
-        <div class="slide" id="slide-11">
-            <div class="tagline">THE BRAIN</div>
-            <h2>Agentic Orchestration</h2>
-            <div class="grid-2">
-                <div style="text-align: left;">
-                    <h3>The Specialist Approach</h3>
-                    <p class="text-left">We don't use one giant model. We use a hierarchy of task-specific agents:</p>
-                    <ul class="list-rich" style="font-size: 1rem;">
-                        <li><strong>The Router:</strong> Classifies intent (Medical vs. General).</li>
-                        <li><strong>The Triage Agent:</strong> Expert in symtom-rule cross-referencing.</li>
-                        <li><strong>The Translator:</strong> Ensures semantic fidelity from Krio to Medical-English.
-                        </li>
-                        <li><strong>The Audit Agent:</strong> Checks the final output for safety violations.</li>
-                    </ul>
-                </div>
-                <div class="code-block" style="color: #fff;">
-                    // Orchestration Pipeline
-                    const intent = await router.classify(query);
-                    if (intent === 'MEDICAL') {
-                    const symptoms = await extractor.parse(query);
-                    const advice = await triageExpert.resolve(symptoms);
-                    const safe_advice = await safetyAuditor.verify(advice);
-                    return safe_advice;
-                    }
-                </div>
-            </div>
-            <p class="mt-4" style="font-size: 0.95rem;">This "Modular AI" approach ensures
-                <strong>Explainability</strong>. We can see exactly which agent made which decision.
-            </p>
-        </div>
-
-        <!-- Slide 12: The Agent Loop (NEW - from codebase) -->
-        <div class="slide" id="slide-12">
-            <div class="tagline">UNDER THE HOOD</div>
-            <h2>The Agent Loop</h2>
-            <div class="grid-2">
-                <div style="text-align: left;">
-                    <h3>Multi-Iteration Reasoning</h3>
-                    <p class="text-left">Unlike simple chatbots, Kai uses an <strong>iterative agent loop</strong> that
-                        can call specialized tools and refine its response up to 5 times before answering.</p>
-                    <ul style="list-style: none; margin-top: 1.5rem;">
-                        <li
-                            style="margin-bottom: 1rem; border-left: 3px solid var(--accent-green); padding-left: 1rem;">
-                            <strong>Step 1:</strong> Build prompt with conversation history
-                        </li>
-                        <li style="margin-bottom: 1rem; border-left: 3px solid var(--accent-blue); padding-left: 1rem;">
-                            <strong>Step 2:</strong> Send to Geneline-X AI for reasoning
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; border-left: 3px solid var(--accent-purple); padding-left: 1rem;">
-                            <strong>Step 3:</strong> If tool call detected → Execute tool → Loop back
-                        </li>
-                        <li style="margin-bottom: 1rem; border-left: 3px solid var(--accent-red); padding-left: 1rem;">
-                            <strong>Step 4:</strong> Final response → Check for escalation triggers
-                        </li>
-                    </ul>
-                </div>
-                <div class="code-block" style="color: #25D366; font-size: 0.75rem;">
-                    // agent-loop.ts (REAL CODE)<br>
-                    while (iterations < this.maxIterations) {<br>
-                        &nbsp;&nbsp;iterations++;<br>
-                        &nbsp;&nbsp;const prompt = this.promptBuilder.buildPrompt(<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;userMessage, historyText, true, userRole<br>
-                        &nbsp;&nbsp;);<br>
-                        &nbsp;&nbsp;const response = await this.callGeneline(prompt);<br>
-                        &nbsp;&nbsp;const toolCall = this.toolRegistry.parseToolCall(response);<br><br>
-                        &nbsp;&nbsp;if (!toolCall) {<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;// Final response - check for escalation<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;return { response, toolCallsCount, iterations };<br>
-                        &nbsp;&nbsp;}<br>
-                        &nbsp;&nbsp;// Execute tool and continue loop...<br>
-                        }
-                </div>
-            </div>
-            <p class="mt-4" style="font-size: 0.95rem;">This loop ensures Kai <strong>thinks before
-                    speaking</strong>—verifying symptoms against guidelines before giving advice.</p>
-        </div>
 
         <!-- Slide 13: The "Hack" (Innovation) -->
-        <div class="slide" id="slide-12">
+        <!-- Slide 11: Engineering Excellence -->
+        <div class="slide" id="slide-11">
             <div class="tagline">ENGINEERING EXCELLENCE</div>
             <h2>The Secret Sauce</h2>
             <div class="grid-2">
@@ -1018,8 +969,8 @@
             </div>
         </div>
 
-        <!-- Slide 14: Symptom Triage Engine (NEW - from codebase) -->
-        <div class="slide" id="slide-14">
+        <!-- Slide 12: Symptom Triage Engine -->
+        <div class="slide" id="slide-12">
             <div class="tagline">CLINICAL INTELLIGENCE</div>
             <h2>The Symptom Triage Engine</h2>
             <div class="grid-2">
@@ -1052,22 +1003,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="code-block" style="color: #fff; font-size: 0.7rem;">
-                    // symptom-triage-tool.ts (REAL CODE)<br><br>
-                    'convulsions': {<br>
-                    &nbsp;&nbsp;urgency: 'emergency',<br>
-                    &nbsp;&nbsp;englishAdvice: '🚨 EMERGENCY: Convulsions<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;require immediate medical care!',<br>
-                    &nbsp;&nbsp;krioAdvice: '🚨 EMƐJƐNSI: Fit de kech am<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;nid kwik ɛlp! Go ɔspitul naw!',<br>
-                    &nbsp;&nbsp;referralNeeded: true,<br>
-                    },<br><br>
-                    'mild_fever': {<br>
-                    &nbsp;&nbsp;urgency: 'moderate',<br>
-                    &nbsp;&nbsp;homeCare: ['Take paracetamol', 'Drink fluids'],<br>
-                    &nbsp;&nbsp;krioHomeCare: ['Tek paracetamol', 'Drink wata'],<br>
-                    &nbsp;&nbsp;referralNeeded: false,<br>
-                    }
+                <div class="stat-card"
+                    style="background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1);">
+                    <div style="text-align: left;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <p
+                                style="font-size: 0.75rem; font-weight: bold; color: var(--accent-red); margin-bottom: 0.3rem;">
+                                SYMPTOM: CONVULSIONS</p>
+                            <p style="font-size: 0.85rem; color: #fff; margin-bottom: 0.3rem;">"Fit de kech am nid kwik
+                                ɛlp! Go ɔspitul naw!"</p>
+                            <p style="font-size: 0.7rem; color: #888;">Status: Immediate Referral Required</p>
+                        </div>
+                        <div>
+                            <p
+                                style="font-size: 0.75rem; font-weight: bold; color: var(--accent-green); margin-bottom: 0.3rem;">
+                                SYMPTOM: MILD FEVER</p>
+                            <p style="font-size: 0.85rem; color: #fff; margin-bottom: 0.3rem;">"Tek paracetamol, drink
+                                bɔku wata."</p>
+                            <p style="font-size: 0.7rem; color: #888;">Status: Home Care Guidance Provided</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <p class="mt-4" style="font-size: 0.95rem;">Each symptom entry includes <strong>follow-up
@@ -1075,8 +1030,8 @@
                 both languages.</p>
         </div>
 
-        <!-- Slide 15: Krio NLP Deep Dive (NEW - from codebase) -->
-        <div class="slide" id="slide-15">
+        <!-- Slide 13: Krio NLP Deep Dive -->
+        <div class="slide" id="slide-13">
             <div class="tagline">LANGUAGE ENGINEERING</div>
             <h2>The Krio NLP Engine</h2>
             <div class="grid-2">
@@ -1116,87 +1071,85 @@
                         <code>headache</code> symptom in our triage database.
                     </p>
                 </div>
-                <div class="code-block" style="color: #8b5cf6; font-size: 0.7rem;">
-                    // krio-phrases.ts (800+ LINES)<br><br>
-                    export const krioSymptomVariations = {<br>
-                    &nbsp;&nbsp;headache: [<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;'edek', 'edik', 'ɛdɛk',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;'a get edek', 'agat edik',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;'ed de wori', 'ed de pen',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;'ɛd de wɔri', 'ɛd de pɛn',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;'my ed pain', 'edik de kilmi'<br>
-                    &nbsp;&nbsp;],<br>
-                    &nbsp;&nbsp;fever: [<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;'fiba', 'feba', 'fever', 'feva',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;'bodi ot', 'bɔdi ɔt', 'hot body',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;'a get fiba', 'temperature'<br>
-                    &nbsp;&nbsp;],<br>
-                    &nbsp;&nbsp;malaria: [<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;'malaria', 'maleria', 'palidis',<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;'cold ketch mi', 'shaking'<br>
-                    &nbsp;&nbsp;],<br>
-                    };
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 16: Dashboard Analytics (NEW - from codebase) -->
-        <div class="slide" id="slide-16">
-            <div class="tagline">REAL-TIME INTELLIGENCE</div>
-            <h2>Dashboard Analytics Engine</h2>
-            <div class="grid-2">
-                <div style="text-align: left;">
-                    <h3>Live Data with 10-Second Refresh</h3>
-                    <p class="text-left">Our Next.js 14 dashboard uses <strong>SWR (Stale-While-Revalidate)</strong> for
-                        real-time data without page reloads. Health officials see live updates as patients message Kai.
-                    </p>
-                    <div class="mt-4" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div
-                            style="background: var(--card-bg); border: 2px solid #333; padding: 1rem; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-green);">2,847</div>
-                            <div style="font-size: 0.75rem; color: var(--text-secondary);">TOTAL USERS</div>
-                        </div>
-                        <div
-                            style="background: var(--card-bg); border: 2px solid #333; padding: 1rem; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-blue);">342</div>
-                            <div style="font-size: 0.75rem; color: var(--text-secondary);">TODAY'S MESSAGES</div>
-                        </div>
-                        <div
-                            style="background: var(--card-bg); border: 2px solid #333; padding: 1rem; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-purple);">98.7%</div>
-                            <div style="font-size: 0.75rem; color: var(--text-secondary);">SUCCESS RATE</div>
-                        </div>
-                        <div
-                            style="background: var(--card-bg); border: 2px solid #333; padding: 1rem; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-red);">3</div>
-                            <div style="font-size: 0.75rem; color: var(--text-secondary);">PENDING ESCALATIONS</div>
+                <div class="stat-card"
+                    style="background: rgba(139, 92, 246, 0.05); border-color: rgba(139, 92, 246, 0.2);">
+                    <div style="text-align: left;">
+                        <p
+                            style="font-size: 0.8rem; font-weight: bold; color: var(--accent-purple); margin-bottom: 1rem;">
+                            REAL-WORLD MAPPING</p>
+                        <div>
+                            <div style="margin-bottom: 1rem;">
+                                <p style="font-size: 0.75rem; color: #888;">Input Variations:</p>
+                                <p style="font-size: 0.85rem; color: #fff; margin-bottom: 0.2rem;">"fiba", "bodi ot",
+                                    "temperature"</p>
+                                <p style="font-size: 1rem; color: var(--accent-green); font-weight: bold;">➔ FEVER</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.75rem; color: #888;">Input Variations:</p>
+                                <p style="font-size: 0.85rem; color: #fff; margin-bottom: 0.2rem;">"malaria", "palidis",
+                                    "cold ketch mi"</p>
+                                <p style="font-size: 1rem; color: var(--accent-green); font-weight: bold;">➔ MALARIA</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="code-block" style="color: #3B82F6; font-size: 0.7rem;">
-                    // dashboard/page.tsx (REAL CODE)<br><br>
-                    const { data: stats } = useSWR(<br>
-                    &nbsp;&nbsp;"dashboardStats",<br>
-                    &nbsp;&nbsp;getDashboardStats,<br>
-                    &nbsp;&nbsp;{<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;refreshInterval: 10000, // 10 sec refresh<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;revalidateOnFocus: true,<br>
-                    &nbsp;&nbsp;}<br>
-                    );<br><br>
-                    // Charts auto-update every 30 seconds<br>
-                    const { data: messageTrend } = useSWR(<br>
-                    &nbsp;&nbsp;"messageTrend",<br>
-                    &nbsp;&nbsp;() => getMessageTrend(7),<br>
-                    &nbsp;&nbsp;{ refreshInterval: 30000 }<br>
-                    );
-                </div>
             </div>
-            <p class="mt-4" style="font-size: 0.95rem;">Charts include <strong>Message Trends</strong>, <strong>Intent
-                    Distribution</strong>, <strong>Peak Hours</strong>, and <strong>Recent Activity</strong> logs.</p>
         </div>
 
-        <!-- Slide 17: Data & Privacy -->
-        <div class="slide" id="slide-13">
+        <!-- Slide 14: Intelligent Location Engine -->
+        <div class="slide" id="slide-14">
+            <div class="tagline">THE SPATIAL BRIDGE</div>
+            <h2>Precision Location Mapping</h2>
+            <div class="grid-2">
+                <div style="text-align: left;">
+                    <h3>Solving the "Address Gap"</h3>
+                    <p class="text-left">In Sierra Leone, formal addresses are rare. We built a dual-mode location
+                        engine that bridges GPS precision with conversational context.</p>
+                    <ul class="list-rich" style="margin-top: 1.5rem; font-size: 1rem;">
+                        <li
+                            style="margin-bottom: 1rem; border-left: 3px solid var(--accent-green); padding-left: 1rem;">
+                            <strong>Hybrid Search:</strong> Seamlessly switches between WhatsApp GPS pins and
+                            NLP-extracted town/district names.
+                        </li>
+                        <li style="margin-bottom: 1rem; border-left: 3px solid var(--accent-blue); padding-left: 1rem;">
+                            <strong>Smart Extraction:</strong> Uses fuzzy keyword matching to extract locations like
+                            "Mambo" from dialect-heavy sentences.
+                        </li>
+                        <li style="margin-bottom: 1rem; border-left: 3px solid var(--accent-red); padding-left: 1rem;">
+                            <strong>Zero-Guess Accuracy:</strong> Strictly forbids AI coordinate hallucinations—if it's
+                            not in our verified facility database, we ask for clarification.
+                        </li>
+                    </ul>
+                </div>
+                <div class="stat-card"
+                    style="background: rgba(59, 130, 246, 0.05); border-color: rgba(59, 130, 246, 0.2); padding: 2rem;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 0.9rem; font-style: italic; color: #fff; margin-bottom: 1rem;">"Pikin sik
+                            na Mambo"</p>
+                        <div style="font-size: 1.5rem; margin-bottom: 1rem;">🔍</div>
+                        <div style="display: flex; justify-content: center; gap: 1rem;">
+                            <div style="background: #111; padding: 0.5rem; border-radius: 6px; border: 1px solid #333;">
+                                <p style="font-size: 0.7rem; color: #888;">TOWN</p>
+                                <p style="font-weight: bold; font-size: 0.9rem;">Mambo</p>
+                            </div>
+                            <div style="background: #111; padding: 0.5rem; border-radius: 6px; border: 1px solid #333;">
+                                <p style="font-size: 0.7rem; color: #888;">DISTRICT</p>
+                                <p style="font-weight: bold; font-size: 0.9rem;">Western Rural</p>
+                            </div>
+                        </div>
+                        <p
+                            style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--accent-green); font-weight: bold;">
+                            📍 Nearest: Mambo CHC</p>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-4" style="font-size: 0.95rem;">Every result includes a direct **Google Maps Deep Link**,
+                guiding patients to help within seconds.</p>
+        </div>
+
+
+        <!-- Slide 15: Data & Privacy -->
+        <div class="slide" id="slide-15">
             <div class="tagline">TRUST & GOVERNANCE</div>
             <h2>Patient Data Security</h2>
             <div class="grid-3">
@@ -1222,8 +1175,8 @@
             <p class="mt-4">In healthcare, <strong>Trust</strong> is as important as <strong>Tech</strong>.</p>
         </div>
 
-        <!-- Slide 17: Escalation Workflow (NEW - from codebase) -->
-        <div class="slide" id="slide-17">
+        <!-- Slide 16: Escalation Workflow -->
+        <div class="slide" id="slide-16">
             <div class="tagline">HUMAN-IN-THE-LOOP</div>
             <h2>The Escalation Pipeline</h2>
             <div class="grid-2">
@@ -1255,32 +1208,26 @@
                         </li>
                     </ul>
                 </div>
-                <div class="code-block" style="color: #ef4444; font-size: 0.68rem;">
-                    // lib/actions/escalations.ts (REAL CODE)<br><br>
-                    export async function sendEscalationResponse(<br>
-                    &nbsp;&nbsp;id: string, phone: string, message: string<br>
-                    ) {<br>
-                    &nbsp;&nbsp;// Send message via bot API<br>
-                    &nbsp;&nbsp;const response = await fetch(<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;`${BOT_API_URL}/send`,<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;method: "POST",<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body: JSON.stringify({ phone, message })<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                    &nbsp;&nbsp;);<br><br>
-                    &nbsp;&nbsp;// Update escalation status<br>
-                    &nbsp;&nbsp;await supabase.from("escalations")<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;.update({ status: "in_progress" })<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;.eq("id", id);<br>
-                    }
+                <div class="stat-card"
+                    style="background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.2); padding: 1.5rem;">
+                    <div style="text-align: left;">
+                        <p style="font-size: 0.8rem; font-weight: bold; color: var(--accent-red); margin-bottom: 1rem;">
+                            NOTIFICATION LOG</p>
+                        <div style="font-family: monospace; font-size: 0.8rem; line-height: 1.6;">
+                            <span style="color: var(--accent-red);">[ALERT]</span> High Fever Detected<br>
+                            <span style="color: var(--accent-blue);">[STATUS]</span> Auto-Escalating...<br>
+                            <span style="color: var(--accent-green);">[NOTIFY]</span> CHOs in Port Loko<br>
+                            <span style="color: #888;">[TIME]</span> Just Now
+                        </div>
+                    </div>
                 </div>
             </div>
             <p class="mt-4" style="font-size: 0.95rem;">Average response time: <strong>under 5 minutes</strong> from
                 escalation to human contact.</p>
         </div>
 
-        <!-- Slide 18: Validation & Metrics -->
-        <div class="slide" id="slide-14">
+        <!-- Slide 17: Validation & Metrics -->
+        <div class="slide" id="slide-17">
             <div class="tagline">THE EVIDENCE</div>
             <h2>Performance Benchmarks</h2>
             <div class="grid-3">
@@ -1305,8 +1252,8 @@
             </div>
         </div>
 
-        <!-- Slide 15: Competitive Landscape -->
-        <div class="slide" id="slide-15">
+        <!-- Slide 18: Competitive Landscape -->
+        <div class="slide" id="slide-18">
             <div class="tagline">MARKET POSITION</div>
             <h2>Built for the Emerging Market</h2>
             <div class="table-container">
@@ -1345,8 +1292,8 @@
                 markets. <b>We build for the users left behind.</b></p>
         </div>
 
-        <!-- Slide 16: Business Strategy -->
-        <div class="slide" id="slide-16">
+        <!-- Slide 19: Business Strategy -->
+        <div class="slide" id="slide-19">
             <div class="tagline">SUSTAINABILITY</div>
             <h2>From Project to Platform</h2>
             <div class="grid-3 mt-4">
@@ -1368,8 +1315,8 @@
             </div>
         </div>
 
-        <!-- Slide 17: Market Expansion -->
-        <div class="slide" id="slide-17">
+        <!-- Slide 20: Market Expansion -->
+        <div class="slide" id="slide-20">
             <div class="tagline">SCALABILITY</div>
             <h2>Sierra Leone and Beyond</h2>
             <div class="grid-2">
@@ -1394,8 +1341,8 @@
             </div>
         </div>
 
-        <!-- Slide 18: The Team -->
-        <div class="slide" id="slide-18">
+        <!-- Slide 21: The Team -->
+        <div class="slide" id="slide-21">
             <div class="tagline">THE BUILDERS</div>
             <h2>Engineering for Equity</h2>
             <div class="grid-2">
@@ -1422,8 +1369,8 @@
             </div>
         </div>
 
-        <!-- Slide 19: 12-Month Execution Roadmap -->
-        <div class="slide" id="slide-19">
+        <!-- Slide 22: Execution Roadmap -->
+        <div class="slide" id="slide-22">
             <div class="tagline">EXECUTION</div>
             <h2>Roadmap to 1 Million</h2>
             <div class="timeline">
@@ -1448,8 +1395,8 @@
             </div>
         </div>
 
-        <!-- Slide 20: Closing & The Ask -->
-        <div class="slide" id="slide-15">
+        <!-- Slide 23: Closing & The Ask -->
+        <div class="slide" id="slide-23">
             <div class="glow" style="background: var(--accent-purple);"></div>
             <h1>Let's Debug Healthcare.</h1>
             <p style="margin-bottom: 2.5rem; color: #fff;">We are seeking partnerships and mentorship to turn this hack
