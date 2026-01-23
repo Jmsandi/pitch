@@ -165,8 +165,30 @@
         }
 
         .bento-item:hover {
-            border-color: #444;
+            border-color: var(--accent-green);
             background: #181818;
+            transform: translateY(-5px) scale(1.02);
+            z-index: 5;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .wa-card {
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid rgba(37, 211, 102, 0.2);
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            text-align: center;
+            min-width: 140px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .wa-card:hover {
+            background: rgba(37, 211, 102, 0.2);
+            border-color: var(--accent-green);
+            transform: scale(1.3);
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(37, 211, 102, 0.3);
         }
 
         .bento-item.large {
@@ -448,6 +470,10 @@
         }
 
         /* Mobile Responsiveness */
+        .disabled-slide {
+            display: none !important;
+        }
+
         @media (max-width: 768px) {
             body {
                 overflow-y: auto;
@@ -570,17 +596,70 @@
         <!-- Slide 1: Hero -->
         <div class="slide active" id="slide-1">
             <div class="glow"></div>
-            <div class="tagline">Tech-Forward Healthcare • PTech</div>
-            <h1>Healthcare for All.<br>One Message at a Time.</h1>
-            <p>Deploying conversational intelligence to bridge the gap between 8 million citizens and life-saving
-                medical guidance using the power of Agentic AI.</p>
-            <div style="margin-top: 3rem; font-size: 1.1rem; color: #fff;">
-                <span class="text-accent">Live Node:</span> +232 75 332939
+            <div class="tagline">PTech Healthcare</div>
+            <h1>Health Help for Everyone.<br>Just Send a Message.</h1>
+            <p>An AI doctor on WhatsApp. Free health advice for 8 million people in Sierra Leone — anytime, anywhere.
+            </p>
+            <div
+                style="margin-top: 2.5rem; display: flex; align-items: center; gap: 2.5rem; justify-content: center; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <div
+                        style="background: #fff; padding: 1rem; border-radius: 16px; display: inline-block; box-shadow: 0 10px 40px rgba(37, 211, 102, 0.3);">
+                        <!-- QR Code for WhatsApp: wa.me/23275332939 -->
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/23275332939&bgcolor=ffffff&color=25D366"
+                            alt="Scan to chat on WhatsApp" style="width: 150px; height: 150px; display: block;">
+                    </div>
+                    <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--accent-green); font-weight: 600;">📱
+                        Scan to Try Now</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.1rem; color: #fff;">
+                        <span class="text-accent">Try it:</span> +232 75 332939
+                    </div>
+                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #888;">Message us on WhatsApp</p>
+                </div>
             </div>
         </div>
 
-        <!-- Slide 2: The Critical Stat -->
+        <!-- Slide 2: User Story (Sarah) - Moved here from slide 4 -->
         <div class="slide" id="slide-2">
+            <div class="grid-2">
+                <div style="text-align: left;">
+                    <div class="tagline">MEET SARAH</div>
+                    <h2>A Mother's Impossible Choice</h2>
+                    <p class="text-left" style="color: #fff;">It's 2am. Sarah's baby boy is burning with fever.</p>
+                    <p class="text-left mt-2">No car. No doctor nearby. Heavy rain outside. The nearest clinic is 3
+                        hours away by foot.</p>
+                    <div class="mt-4"
+                        style="padding: 1rem; border-left: 3px solid var(--accent-purple); background: #111; border-radius: 8px;">
+                        <p class="text-left" style="font-size: 1.1rem;">"Do I spend my last money on a motorbike to the
+                            clinic? If it's just a cold, we won't eat for 3 days. If I wait... my son might not wake
+                            up."</p>
+                    </div>
+                    <p class="text-left mt-4" style="font-size: 1rem;"><strong>Sarah just needs one answer:</strong> Is
+                        this an emergency, or can it wait?</p>
+                </div>
+                <div class="persona-card">
+                    <div class="persona-header">
+                        <div class="persona-avatar"></div>
+                        <div>
+                            <div style="font-weight: bold; font-size: 1.5rem;">Sarah, 28</div>
+                            <div style="color: var(--accent-green); font-size: 0.9rem; font-weight: 800;">Village
+                                Mother, Makeni</div>
+                        </div>
+                    </div>
+                    <div class="bento-desc" style="color: #fff; font-size: 1.1rem; line-height: 1.8;">
+                        • Can't read well — prefers voice messages<br>
+                        • Uses WhatsApp daily<br>
+                        • Has a $40 basic phone<br>
+                        • Limited phone data
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: The Critical Stat - Was slide 2 -->
+        <div class="slide" id="slide-3">
             <div class="tagline">MARKET CONTEXT</div>
             <h2>A Structural Collapse</h2>
             <div class="grid-2">
@@ -605,104 +684,134 @@
             </div>
         </div>
 
-        <!-- Slide 3: The 4 Pillars of Failure -->
-        <div class="slide" id="slide-3">
-            <div class="tagline">SYSTEMIC INEQUITY</div>
-            <h2>Why Modern Medicine Fails the Rural Poor</h2>
+        <!-- Slide 4: The 4 Pillars of Failure - Was slide 3 -->
+        <div class="slide" id="slide-4">
+            <div class="tagline">THE PROBLEM</div>
+            <h2>Why Healthcare Fails in Rural Areas</h2>
             <div class="bento-grid">
                 <div class="bento-item">
-                    <div class="bento-title">📍 Geographic Isolation</div>
-                    <div class="bento-desc">70% of the population lives in rural clusters. PHUs (Peripheral Health
-                        Units) are often empty, under-resourced, or unreachable due to monsoon-season road washouts.
+                    <div class="bento-title">📍 Too Far Away</div>
+                    <div class="bento-desc">70% of people live in villages. Clinics are far away and roads wash out in
+                        the rainy season.
                     </div>
                 </div>
                 <div class="bento-item">
-                    <div class="bento-title">🗣️ Linguistic Exclusion</div>
-                    <div class="bento-desc">Traditional medical portals use English. Over 95% of the target population
-                        thinks, speaks, and dreams in Krio. English resources are effectively invisible.</div>
+                    <div class="bento-title">🗣️ Wrong Language</div>
+                    <div class="bento-desc">Medical info is in English. But 95% of people speak Krio. They can't
+                        understand it.</div>
                 </div>
                 <div class="bento-item">
-                    <div class="bento-title">💰 Financial Catastrophe</div>
-                    <div class="bento-desc">One clinic visit can cost $10 in travel and fees—half a week's income. Most
-                        families wait until a condition is critical (and expensive) before seeking help.</div>
+                    <div class="bento-title">💰 Too Expensive</div>
+                    <div class="bento-desc">One clinic visit costs half a week's pay. So people wait until it's an
+                        emergency.</div>
                 </div>
                 <div class="bento-item">
-                    <div class="bento-title">📊 Invisible Outbreaks</div>
-                    <div class="bento-desc">Maternal and child health issues (Pneumonia, Malaria) go unrecorded because
-                        patients die at home. The government lacks real-time signal on public health status.</div>
+                    <div class="bento-title">📊 No Tracking</div>
+                    <div class="bento-desc">When sick people die at home, the government never knows. Disease outbreaks
+                        stay hidden.</div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 4: User Story (Sarah) -->
-        <div class="slide" id="slide-4">
-            <div class="grid-2">
-                <div style="text-align: left;">
-                    <div class="tagline">THE HUMAN ARCHITECTURE</div>
-                    <h2>The Midnight Choice</h2>
-                    <p class="text-left" style="color: #fff;">Sarah is 28, a mother of two in a small village near
-                        Makeni.</p>
-                    <p class="text-left mt-2">Her youngest child has a sudden high fever and chest retractions. It is
-                        raining. There is no car. There is no doctor.</p>
-                    <div class="mt-4"
-                        style="padding: 1rem; border-left: 3px solid var(--accent-purple); background: #111; border-radius: 8px;">
-                        <p class="text-left" style="font-size: 1.1rem;">"If I spend my money on a motorbike to the
-                            clinic and it's just a cold, we don't eat for three days. If I wait and it's Malaria, my son
-                            might not wake up."</p>
-                    </div>
-                    <p class="text-left mt-4" style="font-size: 1rem;">This is the <strong>Information Gap</strong> that
-                        costs lives. Sarah needs a reliable answer in seconds, not hours.</p>
+        <!-- Slide 5: Our Solution - What We Built -->
+        <div class="slide" id="slide-5" style="padding: 2rem 3rem;">
+            <div class="glow" style="background: var(--accent-green);"></div>
+            <div class="tagline" style="margin-bottom: 0.5rem;">OUR SOLUTION</div>
+            <h1 style="font-size: 3rem; margin-bottom: 0.8rem;">What We Built</h1>
+            <p style="margin-bottom: 1.2rem; font-size: 1.1rem;">A <span class="text-accent">WhatsApp-based AI health
+                    assistant</span> for universal access in Sierra Leone.</p>
+
+            <!-- Core Capabilities Grid -->
+            <div
+                style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; width: 100%; max-width: 1150px; margin-top: 1rem;">
+                <div class="bento-item" style="padding: 1.5rem;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🕒</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem;">24/7 Health Guidance</h3>
+                    <p style="font-size: 0.85rem; text-align: left;">Instant access to trusted medical info anytime,
+                        anywhere.</p>
                 </div>
-                <div class="persona-card">
-                    <div class="persona-header">
-                        <div class="persona-avatar"></div>
-                        <div>
-                            <div style="font-weight: bold; font-size: 1.5rem;">Sarah</div>
-                            <div style="color: var(--accent-green); font-size: 0.9rem; font-weight: 800;">Target User
-                                Profile</div>
-                        </div>
-                    </div>
-                    <div class="bento-desc" style="color: #fff; font-size: 1.1rem; line-height: 1.8;">
-                        • Literacy Level: Low (Audio Preferred)<br>
-                        • Primary Communication: WhatsApp Voice<br>
-                        • Tech Hardware: $40 Android Smartphone<br>
-                        • Data Plan: Limited/Expensive
-                    </div>
+                <div class="bento-item" style="padding: 1.5rem;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🧠</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem;">Symptom Triage</h3>
+                    <p style="font-size: 0.85rem; text-align: left;">AI-powered assessment that determines urgency
+                        levels.</p>
+                </div>
+                <div class="bento-item" style="padding: 1.5rem;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🗣️</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem;">Krio Language</h3>
+                    <p style="font-size: 0.85rem; text-align: left;">Full Krio integration with phonetic fuzzy matching.
+                    </p>
+                </div>
+                <div class="bento-item" style="padding: 1.5rem;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎤</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem;">Voice Integration</h3>
+                    <p style="font-size: 0.85rem; text-align: left;">Accepts voice notes for illiterate or low-literacy
+                        users.</p>
+                </div>
+                <div class="bento-item" style="padding: 1.5rem;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚑</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem;">Smart Escalation</h3>
+                    <p style="font-size: 0.85rem; text-align: left;">Seamlessly connects users to real health workers.
+                    </p>
+                </div>
+                <div class="bento-item" style="padding: 1.5rem;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📊</div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.4rem;">Admin Dashboard</h3>
+                    <p style="font-size: 0.85rem; text-align: left;">Real-time monitoring, analytics, and management
+                        tools.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 5: The Infrastructure: AI Bridge -->
-        <div class="slide" id="slide-5">
-            <div class="glow" style="background: var(--accent-blue);"></div>
-            <div class="tagline">THE PATCH</div>
-            <h1>The AI-Health Bridge</h1>
-            <p>We are the first platform to link Enterprise-Grade AI with the WhatsApp ecosystem to provide
-                **Zero-Friction Medical Triage**.</p>
-            <div class="grid-3 mt-4">
-                <div class="stat-card">
-                    <div style="font-size: 3rem;">📱</div>
-                    <h3>Native Entry</h3>
-                    <p style="font-size: 1rem;">No app download. No account creation. If they have WhatsApp, they have a
-                        doctor.</p>
-                </div>
-                <div class="stat-card">
-                    <div style="font-size: 3rem;">🏥</div>
-                    <h3>Clinical RAG</h3>
-                    <p style="font-size: 1rem;">Grounded in the <i>Sierra Leone Standard Treatment Guidelines
-                            (2021)</i>. Real medical authority.</p>
-                </div>
-                <div class="stat-card">
-                    <div style="font-size: 3rem;">🎙️</div>
-                    <h3>Fuzzy NLP</h3>
-                    <p style="font-size: 1rem;">Understands phonetic Krio voice notes and text, handling dialect
-                        variations with high accuracy.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 6: The Infrastructure Overview -->
+        <!-- Slide 6: The Smart Distribution Choice -->
         <div class="slide" id="slide-6">
+            <div class="glow" style="background: var(--accent-green); opacity: 0.1;"></div>
+            <div class="tagline">STRATEGIC DISTRIBUTION</div>
+            <h1 style="font-size: 3.5rem;">Why WhatsApp?</h1>
+            <p style="margin-bottom: 3rem; max-width: 800px;">We didn't build a new app. We built on the platform where
+                8 million Sierra Leoneans already live.</p>
+
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; max-width: 1200px;">
+                <div class="wa-card" style="padding: 2rem; min-width: 200px; max-width: 220px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+                    <div style="font-weight: bold; font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">8M+ Users
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Highest penetration messaging app in the
+                        country.</p>
+                </div>
+                <div class="wa-card" style="padding: 2rem; min-width: 200px; max-width: 220px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">⬇️</div>
+                    <div style="font-weight: bold; font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">Zero Download
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Required - works instantly on any
+                        smartphone.</p>
+                </div>
+                <div class="wa-card" style="padding: 2rem; min-width: 200px; max-width: 220px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
+                    <div style="font-weight: bold; font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">Familiar UI
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Users already know how to chat and send
+                        voice notes.</p>
+                </div>
+                <div class="wa-card" style="padding: 2rem; min-width: 200px; max-width: 220px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📶</div>
+                    <div style="font-weight: bold; font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">Low Data
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Optimized to function on 2G and 3G
+                        networks.</p>
+                </div>
+                <div class="wa-card" style="padding: 2rem; min-width: 200px; max-width: 220px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💸</div>
+                    <div style="font-weight: bold; font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">Free to Use
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">No cost barrier or financial pressure
+                        for users.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: The Infrastructure Overview -->
+        <div class="slide disabled-slide" id="slide-7">
             <div class="tagline">TECHNICAL ARCHITECTURE</div>
             <h2>Built for the Last Mile</h2>
             <div class="arch-container">
@@ -753,8 +862,8 @@
                 intent is categorized, logged, and audited for safety.</p>
         </div>
 
-        <!-- Slide 7: User Flow: Input & Transformation -->
-        <div class="slide" id="slide-7">
+        <!-- Slide 8: User Flow: Input & Transformation -->
+        <div class="slide" id="slide-8">
             <div class="tagline">PHASE 1: THE INPUT PIPELINE</div>
             <h2>Linguistic De-coding</h2>
             <div class="grid-2">
@@ -796,8 +905,8 @@
             </div>
         </div>
 
-        <!-- Slide 8: User Flow: Agentic Reasoning -->
-        <div class="slide" id="slide-8">
+        <!-- Slide 9: User Flow: Agentic Reasoning -->
+        <div class="slide disabled-slide" id="slide-9">
             <div class="tagline">PHASE 2: AGENTIC GUARDRAILS</div>
             <h2>Smart Clinical Logic</h2>
             <div class="grid-2">
@@ -830,8 +939,8 @@
             </div>
         </div>
 
-        <!-- Slide 9: DEMO 1: Patient Experience -->
-        <div class="slide" id="slide-9">
+        <!-- Slide 10: DEMO 1: Patient Experience -->
+        <div class="slide" id="slide-10">
             <div class="tagline">LIVE SIMULATION</div>
             <h2>In the Hands of the Patient</h2>
             <div class="grid-2">
@@ -875,8 +984,8 @@
             </div>
         </div>
 
-        <!-- Slide 10: Health Intelligence: The Doctor's Command Center -->
-        <div class="slide" id="slide-10">
+        <!-- Slide 11: Health Intelligence: The Doctor's Command Center -->
+        <div class="slide disabled-slide" id="slide-11">
             <div class="tagline">HEALTH INTELLIGENCE</div>
             <h2>The Doctor's Command Center</h2>
             <div class="dash-mockup">
@@ -947,8 +1056,8 @@
 
 
         <!-- Slide 13: The "Hack" (Innovation) -->
-        <!-- Slide 11: Engineering Excellence -->
-        <div class="slide" id="slide-11">
+        <!-- Slide 12: Engineering Excellence -->
+        <div class="slide" id="slide-12">
             <div class="tagline">ENGINEERING EXCELLENCE</div>
             <h2>The Secret Sauce</h2>
             <div class="grid-2">
@@ -969,8 +1078,8 @@
             </div>
         </div>
 
-        <!-- Slide 12: Symptom Triage Engine -->
-        <div class="slide" id="slide-12">
+        <!-- Slide 13: Symptom Triage Engine -->
+        <div class="slide" id="slide-13">
             <div class="tagline">CLINICAL INTELLIGENCE</div>
             <h2>The Symptom Triage Engine</h2>
             <div class="grid-2">
@@ -1030,8 +1139,8 @@
                 both languages.</p>
         </div>
 
-        <!-- Slide 13: Krio NLP Deep Dive -->
-        <div class="slide" id="slide-13">
+        <!-- Slide 14: Krio NLP Deep Dive -->
+        <div class="slide" id="slide-14">
             <div class="tagline">LANGUAGE ENGINEERING</div>
             <h2>The Krio NLP Engine</h2>
             <div class="grid-2">
@@ -1096,8 +1205,8 @@
             </div>
         </div>
 
-        <!-- Slide 14: Intelligent Location Engine -->
-        <div class="slide" id="slide-14">
+        <!-- Slide 15: Intelligent Location Engine -->
+        <div class="slide disabled-slide" id="slide-15">
             <div class="tagline">THE SPATIAL BRIDGE</div>
             <h2>Precision Location Mapping</h2>
             <div class="grid-2">
@@ -1148,8 +1257,8 @@
         </div>
 
 
-        <!-- Slide 15: Data & Privacy -->
-        <div class="slide" id="slide-15">
+        <!-- Slide 16: Data & Privacy -->
+        <div class="slide" id="slide-16">
             <div class="tagline">TRUST & GOVERNANCE</div>
             <h2>Patient Data Security</h2>
             <div class="grid-3">
@@ -1175,8 +1284,8 @@
             <p class="mt-4">In healthcare, <strong>Trust</strong> is as important as <strong>Tech</strong>.</p>
         </div>
 
-        <!-- Slide 16: Escalation Workflow -->
-        <div class="slide" id="slide-16">
+        <!-- Slide 17: Escalation Workflow -->
+        <div class="slide" id="slide-17">
             <div class="tagline">HUMAN-IN-THE-LOOP</div>
             <h2>The Escalation Pipeline</h2>
             <div class="grid-2">
@@ -1226,8 +1335,8 @@
                 escalation to human contact.</p>
         </div>
 
-        <!-- Slide 17: Validation & Metrics -->
-        <div class="slide" id="slide-17">
+        <!-- Slide 18: Validation & Metrics -->
+        <div class="slide disabled-slide" id="slide-18">
             <div class="tagline">THE EVIDENCE</div>
             <h2>Performance Benchmarks</h2>
             <div class="grid-3">
@@ -1252,8 +1361,8 @@
             </div>
         </div>
 
-        <!-- Slide 18: Competitive Landscape -->
-        <div class="slide" id="slide-18">
+        <!-- Slide 19: Competitive Landscape -->
+        <div class="slide disabled-slide" id="slide-19">
             <div class="tagline">MARKET POSITION</div>
             <h2>Built for the Emerging Market</h2>
             <div class="table-container">
@@ -1292,8 +1401,8 @@
                 markets. <b>We build for the users left behind.</b></p>
         </div>
 
-        <!-- Slide 19: Business Strategy -->
-        <div class="slide" id="slide-19">
+        <!-- Slide 20: Business Strategy -->
+        <div class="slide" id="slide-20">
             <div class="tagline">SUSTAINABILITY</div>
             <h2>From Project to Platform</h2>
             <div class="grid-3 mt-4">
@@ -1315,8 +1424,8 @@
             </div>
         </div>
 
-        <!-- Slide 20: Market Expansion -->
-        <div class="slide" id="slide-20">
+        <!-- Slide 21: Market Expansion -->
+        <div class="slide" id="slide-21">
             <div class="tagline">SCALABILITY</div>
             <h2>Sierra Leone and Beyond</h2>
             <div class="grid-2">
@@ -1341,8 +1450,8 @@
             </div>
         </div>
 
-        <!-- Slide 21: The Team -->
-        <div class="slide" id="slide-21">
+        <!-- Slide 22: The Team -->
+        <div class="slide disabled-slide" id="slide-22">
             <div class="tagline">THE BUILDERS</div>
             <h2>Engineering for Equity</h2>
             <div class="grid-2">
@@ -1369,8 +1478,8 @@
             </div>
         </div>
 
-        <!-- Slide 22: Execution Roadmap -->
-        <div class="slide" id="slide-22">
+        <!-- Slide 23: Execution Roadmap -->
+        <div class="slide" id="slide-23">
             <div class="tagline">EXECUTION</div>
             <h2>Roadmap to 1 Million</h2>
             <div class="timeline">
@@ -1395,8 +1504,8 @@
             </div>
         </div>
 
-        <!-- Slide 23: Closing & The Ask -->
-        <div class="slide" id="slide-23">
+        <!-- Slide 24: Closing & The Ask -->
+        <div class="slide" id="slide-24">
             <div class="glow" style="background: var(--accent-purple);"></div>
             <h1>Let's Debug Healthcare.</h1>
             <p style="margin-bottom: 2.5rem; color: #fff;">We are seeking partnerships and mentorship to turn this hack
@@ -1433,7 +1542,7 @@
 
     <script>
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
+        const slides = document.querySelectorAll('.slide:not(.disabled-slide)');
         const progress = document.getElementById('progress');
         const slideNumberDisplay = document.getElementById('slide-number');
         const TOTAL_SLIDES = slides.length;
